@@ -1,7 +1,5 @@
 # Decide Wise
 
-![Decide Wise Logo](favicon.png)
-
 **Decide Wise** is a simple web tool designed to assist in making informed decisions about whether a software feature is worth building or not. This app provides a structured approach to assessing various factors that influence feature development, helping you make more objective and data-driven decisions.
 
 ## Table of Contents
