@@ -53,7 +53,7 @@ The app has no external dependencies. It's designed to run in modern web browser
 
 ## Contributing
 
-We welcome contributions to improve **Decide Wise**! If you have ideas for enhancements, bug fixes, or new features, please submit issues and pull requests on the [GitHub repository](https://github.com/yourusername/decide-wise).
+We welcome contributions to improve **Decide Wise**! If you have ideas for enhancements, bug fixes, or new features, please submit issues and pull requests on the [GitHub repository](https://github.com/avi4h/decide-wise)).
 
 ## License
 
