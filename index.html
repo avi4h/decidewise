@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Decide Wise</title>
+    <meta name="description" content="A simple tool for helping decide whether a software feature is worth building or not." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <section class="box">
+            <p class="help">1: Low, 10: High</p>
+            <h1 class="title">Decide Wise</h1>
+            <p>A simple tool for helping decide whether a software feature is worth building or not.</p>
+            <br />
+            <form class="form">
+                <fieldset class="p-users">
+                    <span class="value"></span>
+                    <label>What proportion of users (1 = a small proportion, 10 = all users) are likely to use the feature?</label>
+                    <input type="range" min="1" max="10" step="0.5" value="5.5" />
+                </fieldset>
+                <fieldset class="p-effort">
+                    <span class="value"></span>
+                    <label>What is the time, technical effort, and cost to build the feature?</label>
+                    <input type="range" min="1" max="10" step="0.5" value="5.5" />
+                </fieldset>
+                <fieldset class="p-user-value">
+                    <span class="value"></span>
+                    <label>How important are the target users to the existing product?</label>
+                    <input type="range" min="1" max="10" step="0.5" value="5.5" />
+                </fieldset>
+                <fieldset class="p-operational-complexity">
+                    <span class="value"></span>
+                    <label>What is the operational / business complexity of the feature?</label>
+                    <input type="range" min="1" max="10" step="0.5" value="5.5" />
+                </fieldset>
+                <fieldset class="p-feature-value">
+                    <span class="value"></span>
+                    <label>How valuable is the feature to the target users, truly?</label>
+                    <input type="range" min="1" max="10" step="0.5" value="5.5" />
+                </fieldset>
+                <fieldset class="p-negative-impact">
+                    <span class="value"></span>
+                    <label>How much potential technical risk can the feature bring to the rest of the product?</label>
+                    <input type="range" min="1" max="10" step="0.5" value="5.5" />
+                </fieldset>
+            </form>
+            <div class="text-center">
+                <button id="answer-visibility-toggle">Show Answer</button>
+            </div>
+            <h1 class="answer hide">
+                <span><span class="bool"></span> (<span class="percent"></span>)</span>
+            </h1>
+        </section>
+
+        <noscript>
+            <h1>This page requires Javascript to function.</h1>
+        </noscript>
+    </div>
+
+
+    <script>
+        (function () {
+            const params = [
+                { weight: 0.10, value: 5.5, negative: false, name: 'p-users', },
+                { weight: 0.20, value: 5.5, negative: false, name: 'p-user-value', },
+                { weight: 0.20, value: 5.5, negative: false, name: 'p-feature-value', },
+                { weight: 0.15, value: 5.5, negative: true, name: 'p-effort', },
+                { weight: 0.20, value: 5.5, negative: true, name: 'p-negative-impact', },
+                { weight: 0.15, value: 5.5, negative: true, name: 'p-operational-complexity', },
+            ]
+
+            params.forEach((p, n) => {
+                let net = 0;
+                const inp = document.querySelector(`.${p.name} input`);
+
+                inp.value = p.value;
+                inp.oninput = (e) => {
+                    const val = parseFloat(e.target.value, 64);
+                    document.querySelector(`.${p.name} .value`).innerText = val;
+                    p.value = val;
+
+                    // Sum all weighted params.
+                    const sum = params.reduce((prev, pm) => {
+                        let v = pm.value;
+                        if (pm.negative) {
+                            v = 10 - v;
+                        }
+
+                        return prev + (v / 10 * pm.weight);
+                    }, 0);
+
+                    // Display the results.
+                    document.querySelector(".answer .percent").innerText = `${(sum * 100).toFixed(0)}%`;
+
+                    let b = 'Yes';
+                    if (sum < 0.5 && sum > 0.46) {
+                        b = `No, but a close call.`;
+                    } else if (sum < 0.48) {
+                        b = `No.`;
+                    } else if (sum > 0.5 && sum < 0.54) {
+                        b = `Yes, but a close call.`;
+                    } else if (sum === 0.5) {
+                        b = '50-50. Go with the gut.';
+                    }
+                    document.querySelector(".answer .bool").innerText = b;
+                };
+
+                inp.dispatchEvent(new Event('input'));
+            });
+        })();
+
+        (function () {
+            const answerToggle = document.querySelector('#answer-visibility-toggle');
+            const answerElement = document.querySelector('.answer');
+            const hideClass = 'hide';
+
+            const refreshButton = () => {
+                const hidden = answerElement.classList.contains(hideClass);
+                answerToggle.innerText = hidden ? 'Show Answer' : 'Hide Answer';
+            }
+
+            const toggleAnswer = () => {
+                answerElement.classList.toggle(hideClass);
+            }
+
+            refreshButton();
+
+            answerToggle.addEventListener('click', function () {
+                toggleAnswer();
+                refreshButton();
+            });
+        })();
+
+    </script>
+
+</body>
+
+</html>
