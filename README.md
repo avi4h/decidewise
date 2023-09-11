@@ -1,6 +1,6 @@
 # Decide Wise
 
-**Decide Wise** is a simple web tool designed to assist in making informed decisions about whether a software feature is worth building or not. This app provides a structured approach to assessing various factors that influence feature development, helping you make more objective and data-driven decisions.
+[**Decide Wise**](https://avi4h.github.io/decide-wise/) is a simple web tool designed to assist in making informed decisions about whether a software feature is worth building or not. This app provides a structured approach to assessing various factors that influence feature development, helping you make more objective and data-driven decisions.
 
 ## Table of Contents
 
@@ -39,7 +39,7 @@ You can adjust these parameters using a slider, and the app will instantly calcu
 
 ## Getting Started
 
-To use **Decide Wise**, simply open the [web app](avi4h.github.io/decide-wise/) in your web browser. Ensure that JavaScript is enabled as the app relies on it for functionality. Follow these steps:
+To use **Decide Wise**, simply open the [web app](https://avi4h.github.io/decide-wise/) in your web browser. Ensure that JavaScript is enabled as the app relies on it for functionality. Follow these steps:
 
 1. Adjust the sliders for each parameter to reflect your assessment.
 2. Observe the decision score and the recommendation provided.
