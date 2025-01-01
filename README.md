@@ -1,10 +1,10 @@
-# Decide Wise
+# DecideWise
 
 A tool to assist in decision-making on whether a feature is worth building or not.
 
 ## How It Works
 
-**Decide Wise** uses a set of predefined parameters with associated weights to calculate a decision score. Here are the key parameters:
+**DecideWise** uses a set of predefined parameters with associated weights to calculate a decision score. Here are the key parameters:
 
 1. User Proportion: What proportion of users are likely to use the feature?
 2. User Importance: How important are the target users to the existing product?
