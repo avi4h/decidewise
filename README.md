@@ -1,6 +1,6 @@
 # Decide Wise
 
-A tool to assist in decision-making on whether a software feature is worth building or not.
+A tool to assist in decision-making on whether a feature is worth building or not.
 
 ## How It Works
 
