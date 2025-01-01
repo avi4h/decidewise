@@ -13,6 +13,4 @@ A tool to assist in decision-making on whether a software feature is worth build
 5. Negative Impact: How much potential technical risk can the feature bring to the rest of the product?
 6. Operational Complexity: What is the operational/business complexity of the feature?
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/mit/) file for details.
